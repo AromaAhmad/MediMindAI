@@ -12,7 +12,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun HomeScreen(
     onCheckSymptomsClick: () -> Unit,
-    onViewHistoryClick: () -> Unit
+    onViewHistoryClick: () -> Unit,
+    onCameraClick: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -49,6 +50,15 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("View History")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = onCameraClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Scan Medicine/Symptom")
         }
     }
 }

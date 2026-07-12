@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -16,7 +17,7 @@ import com.aroma.medimindai.data.ChatMessage
 import kotlinx.coroutines.launch
 
 @Composable
-fun ChatScreen() {
+fun ChatScreen(imagePathFromCamera: String? = null) {
     val context = LocalContext.current
     val viewModel: ChatViewModel = viewModel(
         factory = viewModelFactory {
@@ -31,6 +32,12 @@ fun ChatScreen() {
     var isButtonEnabled by remember { mutableStateOf(true) }
 
     val scope = rememberCoroutineScope()
+
+    LaunchedEffect(imagePathFromCamera) {
+        imagePathFromCamera?.let { path ->
+            viewModel.sendImageMessage(path)
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp)
@@ -104,15 +111,31 @@ fun MessageBubble(message: ChatMessage) {
                         MaterialTheme.colorScheme.surfaceVariant
             )
         ) {
-            Text(
-                text = message.message,
-                modifier = Modifier.padding(12.dp),
-                color =
-                    if (message.isUser)
-                        MaterialTheme.colorScheme.onPrimary
-                    else
-                        MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            Column(modifier = Modifier.padding(12.dp)) {
+                if (message.imagePath != null) {
+                    val bitmap = remember(message.imagePath) {
+                        android.graphics.BitmapFactory.decodeFile(message.imagePath)
+                    }
+                    bitmap?.let {
+                        androidx.compose.foundation.Image(
+                            bitmap = it.asImageBitmap(),
+                            contentDescription = "Sent image",
+                            modifier = Modifier
+                                .size(200.dp)
+                                .padding(bottom = 4.dp)
+                        )
+                    }
+                }
+
+                Text(
+                    text = message.message,
+                    color =
+                        if (message.isUser)
+                            MaterialTheme.colorScheme.onPrimary
+                        else
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }

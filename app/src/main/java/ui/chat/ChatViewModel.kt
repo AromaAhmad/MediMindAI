@@ -22,7 +22,7 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             val saved = repository.getAllMessages()
             _messages.value = saved.map { entity ->
-                ChatMessage(message = entity.message, isUser = entity.isUser)
+                ChatMessage(message = entity.message, isUser = entity.isUser, imagePath = entity.imagePath)
             }
         }
     }
@@ -75,6 +75,35 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
             } finally {
                 _isLoading.value = false
                 isRequestInProgress = false
+            }
+        }
+    }
+
+    fun sendImageMessage(imagePath: String) {
+        viewModelScope.launch {
+            try {
+                _isLoading.value = true
+
+                _messages.value = _messages.value + ChatMessage(
+                    message = "Image sent",
+                    isUser = true,
+                    imagePath = imagePath
+                )
+                repository.saveMessage("Image sent", true, imagePath)
+
+                val bitmap = android.graphics.BitmapFactory.decodeFile(imagePath)
+
+                val response = repository.getImageAnalysis(bitmap)
+
+                _messages.value = _messages.value + ChatMessage(response, false)
+                repository.saveMessage(response, false)
+
+            } catch (e: Exception) {
+                _messages.value = _messages.value + ChatMessage(
+                    "Error analyzing image: ${e.message}", false
+                )
+            } finally {
+                _isLoading.value = false
             }
         }
     }

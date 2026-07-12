@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.Room
 import android.content.Context
 
-@Database(entities = [ChatEntity::class], version = 1)
+@Database(entities = [ChatEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
         abstract fun chatDao(): ChatDao
 
@@ -19,7 +19,9 @@ abstract class AppDatabase : RoomDatabase() {
                                         context,
                                         AppDatabase::class.java,
                                         "medimind_database"
-                                ).build()
+                                )
+                                        .fallbackToDestructiveMigration(true)
+                                        .build()
                                 INSTANCE = instance
                                 instance
                         }

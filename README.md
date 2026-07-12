@@ -70,7 +70,7 @@ Users can chat with an AI assistant, capture photos of medicines, prescriptions,
 
 <img width="220" src="https://github.com/user-attachments/assets/fb26aa7a-c3b6-4e45-bade-6273542b0ccf"/>
 
-<img width="220" src="https://github.com/user-attachments/assets/961b9625-2be8-48e2-9f90-1e41176ebd6b"/>
+<img width="220" src="YOUR_IMAGE_URL_HERE" alt="Camera Permission"/>
 
 <img width="220" src="https://github.com/user-attachments/assets/fdf9d94f-e83e-4196-a266-d4acdedb42ea"/>
 

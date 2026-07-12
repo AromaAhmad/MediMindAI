@@ -66,15 +66,15 @@ Users can chat with an AI assistant, capture photos of medicines, prescriptions,
 
 <p align="center">
 
-<p align="center">
+<img width="220" src="https://github.com/user-attachments/assets/fb26aa7a-c3b6-4e45-bade-6273542b0ccf" alt="Camera Permission"/>
 
-<img width="220" src="https://github.com/user-attachments/assets/fb26aa7a-c3b6-4e45-bade-6273542b0ccf"/>
+<img width="220" src="https://github.com/user-attachments/assets/961b9625-2be8-48e2-9f90-1e41176ebd6b" alt="Camera Preview"/>
 
-<img width="220" src="https://github.com/user-attachments/assets/fdf9d94f-e83e-4196-a266-d4acdedb42ea"/>
+<img width="220" src="https://github.com/user-attachments/assets/fdf9d94f-e83e-4196-a266-d4acdedb42ea" alt="Captured Image"/>
 
-<img width="220" src="https://github.com/user-attachments/assets/ead68cc0-fed4-40d0-aadc-ef6e33d2b5ce"/>
+<img width="220" src="https://github.com/user-attachments/assets/ead68cc0-fed4-40d0-aadc-ef6e33d2b5ce" alt="AI Processing"/>
 
-<img width="220" src="https://github.com/user-attachments/assets/fb27f89c-5082-43f7-9a33-6a55b14d13c3"/>
+<img width="220" src="https://github.com/user-attachments/assets/fb27f89c-5082-43f7-9a33-6a55b14d13c3" alt="AI Response"/>
 
 </p>
 
